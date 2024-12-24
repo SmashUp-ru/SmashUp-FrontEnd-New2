@@ -1,7 +1,6 @@
 import { axiosSession } from '@/lib/utils.ts';
-import { getToken } from '@/store/profile.ts';
 import { AxiosResponse } from 'axios';
-import { useGlobalStore } from '@/store/global.ts';
+import { getToken, useGlobalStore } from '@/store/global.ts';
 import { useEffect, useState } from 'react';
 
 export function useRecommendations() {
