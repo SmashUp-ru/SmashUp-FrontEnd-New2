@@ -6,7 +6,8 @@ import { useRecommendations } from '@/router/features/recommendations/useRecomme
 
 export function useRootPageData() {
     const { startLoading, updateIsLoading } = useGlobalStore();
-    const { recommendations: recommendationsIds } = useRecommendations();
+    const { recommendations: recommendationsIds, isLoading: recommendationsIdsLoading } =
+        useRecommendations();
     const getManyMashupsByIds = useMashupStore((state) => state.getManyByIds);
     const getManyPlaylistsByIds = usePlaylistStore((state) => state.getManyByIds);
 
@@ -20,8 +21,8 @@ export function useRootPageData() {
     }, []);
 
     useEffect(() => {
-        updateIsLoading(playlistsLoading || recommendationsLoading);
-    }, [playlistsLoading, recommendationsLoading]);
+        updateIsLoading(playlistsLoading || recommendationsIdsLoading || recommendationsLoading);
+    }, [playlistsLoading, recommendationsLoading, recommendationsIdsLoading]);
 
     const [playlists, setPlaylists] = useState<Playlist[]>([]);
     useEffect(() => {
@@ -43,6 +44,6 @@ export function useRootPageData() {
         playlists,
         recommendationsIds,
         recommendations,
-        isLoading: recommendationsLoading || playlistsLoading
+        isLoading: recommendationsIdsLoading || recommendationsLoading || playlistsLoading
     };
 }
