@@ -1,14 +1,14 @@
 import { Mashup, useMashupStore } from '@/store/entities/mashup.ts';
 import { Playlist, usePlaylistStore } from '@/store/entities/playlist.ts';
-import { useRecommendationsStore } from '@/store/recommendations.ts';
 import { useEffect, useState } from 'react';
 import { useGlobalStore } from '@/store/global.ts';
+import { useRecommendations } from '@/router/features/recommendations/useRecommendations.ts';
 
 export function useRootPageData() {
     const { startLoading, updateIsLoading } = useGlobalStore();
+    const { recommendations: recommendationsIds } = useRecommendations();
     const getManyMashupsByIds = useMashupStore((state) => state.getManyByIds);
     const getManyPlaylistsByIds = usePlaylistStore((state) => state.getManyByIds);
-    const { recommendationsIds } = useRecommendationsStore();
 
     const [playlistsLoading, setPlaylistsLoading] = useState(false);
     const [recommendationsLoading, setRecommendationsLoading] = useState(false);
