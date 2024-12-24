@@ -10,9 +10,6 @@ interface GlobalState {
     likes: null | number[];
     updateLikes: (newLikes: number[]) => void;
 
-    recommendations: null | number[];
-    updateRecommendations: (newRecommendations: number[]) => void;
-
     settings: null | number;
     updateSettings: (newSettings: number) => void;
 
@@ -37,10 +34,6 @@ export const useGlobalStore = create<GlobalState>((set, get) => ({
 
     likes: null,
     updateLikes: (newLikes: number[]) => set(() => ({ likes: newLikes })),
-
-    recommendations: null,
-    updateRecommendations: (newRecommendations: number[]) =>
-        set(() => ({ recommendations: newRecommendations })),
 
     settings: null,
     updateSettings: (newSettings: number) => set(() => ({ settings: newSettings })),
