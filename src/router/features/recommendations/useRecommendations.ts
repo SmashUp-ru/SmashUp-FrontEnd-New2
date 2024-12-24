@@ -4,14 +4,9 @@ import { getToken, useGlobalStore } from '@/store/global.ts';
 import { useEffect, useState } from 'react';
 
 export function useRecommendations() {
-    const { recommendations, updateRecommendations } = useGlobalStore();
-    const { currentUser } = useGlobalStore();
+    const { recommendations, updateRecommendations, currentUser } = useGlobalStore();
 
-    const [recommendationsLoading, setRecommendationsLoading] = useState(false);
-
-    useEffect(() => {
-        setRecommendationsLoading(true);
-    }, []);
+    const [recommendationsLoading, setRecommendationsLoading] = useState(true);
 
     useEffect(() => {
         if (currentUser) {
