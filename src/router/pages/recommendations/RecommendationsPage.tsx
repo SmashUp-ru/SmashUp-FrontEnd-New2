@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import MashupSmallThumb from '@/router/shared/mashup/MashupSmallThumb.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import PlayHollowIcon from '@/components/icons/PlayHollowIcon.tsx';
 import { usePlayer } from '@/router/features/player/usePlayer.ts';
@@ -16,7 +15,7 @@ export default function RecommendationsPage() {
     const { isPlaying, queueId } = usePlayerStore();
     const { playQueue, pause } = usePlayer();
 
-    const { recommendations, recommendationsIds, isLoading } = useRecommendationsPageData();
+    const { recommendationsIds, isLoading } = useRecommendationsPageData();
 
     const { currentUser } = useGlobalStore();
 
@@ -80,18 +79,18 @@ export default function RecommendationsPage() {
                 </div>
             </div>
 
-            <div className='flex flex-col gap-y-1'>
-                {recommendations.map((mashup, idx) => (
-                    <MashupSmallThumb
-                        key={mashup.id}
-                        mashup={mashup}
-                        playlist={recommendationsIds}
-                        indexInPlaylist={idx}
-                        playlistName={`Рекомендации ${currentUser.username}`}
-                        queueId={`recommendations`}
-                    />
-                ))}
-            </div>
+            {/*<div className='flex flex-col gap-y-1'>*/}
+            {/*    {recommendations.map((mashup, idx) => (*/}
+            {/*        <MashupSmallThumb*/}
+            {/*            key={mashup.id}*/}
+            {/*            mashup={mashup}*/}
+            {/*            playlist={recommendationsIds}*/}
+            {/*            indexInPlaylist={idx}*/}
+            {/*            playlistName={`Рекомендации ${currentUser.username}`}*/}
+            {/*            queueId={`recommendations`}*/}
+            {/*        />*/}
+            {/*    ))}*/}
+            {/*</div>*/}
         </div>
     );
 }
